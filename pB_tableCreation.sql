@@ -1,5 +1,14 @@
 
 
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS charity;
+DROP TABLE IF EXISTS event;
+DROP TABLE IF EXISTS task;
+DROP TABLE IF EXISTS volunteer_task;
+DROP TABLE IF EXISTS volunteer;
+DROP TABLE IF EXISTS charity_tag;
+DROP TABLE IF EXISTS tag;
+SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE `charity` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -11,21 +20,21 @@ PRIMARY KEY (`id`)
 
 CREATE TABLE `event` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
-`cid` int(11) NOT NULL,
+`c_id` int(11) NOT NULL,
 `name` varchar(255) UNIQUE,
 `information` varchar(255),
 `time` varchar(255),
 PRIMARY KEY (`id`),
-FOREIGN KEY (`cid`) REFERENCES `charity` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+FOREIGN KEY (`c_id`) REFERENCES `charity` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB;
 
 CREATE TABLE `task` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
-`eid` int(11) NOT NULL,
+`e_id` int(11) NOT NULL,
 `name` varchar(255),
 `description` varchar(255),
 PRIMARY KEY (`id`),
-FOREIGN KEY (`eid`) REFERENCES `event` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+FOREIGN KEY (`e_id`) REFERENCES `event` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=InnoDB;
 
 CREATE TABLE `volunteer` (
