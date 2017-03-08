@@ -1,18 +1,39 @@
-body{
+body {
 	margin: 0 auto;
 	max-width: 900px;
     font-family: Helvetica, Geneva, Arial,
           SunSans-Regular, sans-serif;
-    align: left;
-    }
-nav{}
-nav li{background-color:lightblue; display:inline-block; padding: 14px 16px;}
-nav li a{color: white; text-decoration: none; text-align: left;}
-head{}
-footer{}
+    align: left; }
 
-input[type=text], input[type=number] {
+nav{}
+
+nav li {
+    background-color:#0066cc;
+    display:inline-block;
+    padding: 14px 16px; }
+
+nav li a{
+    color: white;
+    text-decoration: none;
+    text-align: left; }
+
+fieldset {
+    margin: 8px 0; }
+
+legend {
+    margin: 8px 0; }
+
+input[type=text], input[type=number], input[type=date], input[type=time], input[type=password] {
     width: 75%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box; }
+
+input[type=submit] {
+    background-color: #0066cc;
+    border: none;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer; }

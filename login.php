@@ -12,6 +12,7 @@
   <body>
       <nav>
       <ul>
+        <li><a href="index.php">Home</a></li>
         <li><a href="login.php">Login</a></li>
         <li><a href="createE.php">Create Event</a></li>
         <li><a href="createT.php">Create Task</a></li>
@@ -19,29 +20,32 @@
         <li><a href="search.php">Search</a></li>
       </ul>
     </nav>
-    <form>
-      <h2>Welcome to Volunteer Match!</h2>
-      <h3>Please login</h3>
+    <h2>Welcome to Volunteer Match!</h2>
+    <h3>Please login</h3>
+    <form method="post" action="orgLogin.php">
       <fieldset>
         <legend>Organization login</legend>
-        <label for="name">Organization Name</label>
+        <label for="name">Name</label>
         <input name="name"
                id="name"
                type="text"
                placeholder="Charitable Organization"
                maxlength="80"/><br>
-        
+
         <label for="pass">Password</label>
         <input name="pass"
                id="pass"
                type="password"
                placeholder="password"
                maxlength="30"/><br>
+      <input type="submit">
       </fieldset>
+    </form>
       <br>
+      <form method="post" action="volLogin.php">
       <fieldset>
         <legend>Volunteer Login</legend>
-        <label for="username">username</label>
+        <label for="username">Name</label>
         <input name="username"
                id="username"
                type="text"
@@ -54,6 +58,7 @@
                type="password"
                placeholder="password"
                maxlength="30"/><br>
+      <input type="submit">
       </fieldset>
     </form>  
   </body>

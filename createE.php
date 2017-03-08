@@ -12,6 +12,7 @@
   <body>
       <nav>
       <ul>
+        <li><a href="index.php">Home</a></li>
         <li><a href="login.php">Login</a></li>
         <li><a href="createE.php">Create Event</a></li>
         <li><a href="createT.php">Create Task</a></li>
@@ -19,7 +20,7 @@
         <li><a href="search.php">Search</a></li>
       </ul>
     </nav>
-    <form>
+    <form method="post" action="addEvent.php">
       <h2>Create Event</h2>
       <fieldset>
         <legend>Organization Information</legend>
@@ -29,14 +30,14 @@
                type="text"
                placeholder="Charitable Organization"
                maxlength="80"/><br>
-        
+
         <label for="founded">Year Founded</label>
         <input name="founded"
                id="founded"
                type="number"
                placeholder="YYYY"
                maxlength="4"/><br>
-        
+
         <label for="founder">Founder Name</label>
         <input name="founder"
                id="founder"
@@ -53,14 +54,14 @@
                type="text"
                placeholder="Party at White House"
                maxlength="100"/><br>
-        
+
         <label for="eventtime">Date</label>
         <input name="eventdate"
                id="eventdate"
                type="date"
                placeholder="2011-08-01"
                maxlength="100"/><br>
-        
+
         <label for="eventtime">Time</label>
         <input name="eventtime"
                id="eventtime"
@@ -74,10 +75,11 @@
                type=text
                placeholder="more information"
                maxlength="400"/><br>
+        <input type="submit">
       </fieldset>
-    </form>  
+    </form>
   </body>
-  
+
   <footer>
   </footer>
-</html> 
+</html>

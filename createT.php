@@ -12,6 +12,7 @@
   <body>
       <nav>
       <ul>
+        <li><a href="index.php">Home</a></li>
         <li><a href="login.php">Login</a></li>
         <li><a href="createE.php">Create Event</a></li>
         <li><a href="createT.php">Create Task</a></li>
@@ -19,7 +20,7 @@
         <li><a href="search.php">Search</a></li>
       </ul>
     </nav>
-    <form>
+    <form method="post" action="addTask.php">
       <h2>Create Event Task</h2>
       <fieldset>
         <legend>Task</legend>
@@ -29,18 +30,18 @@
                type="text"
                placeholder="Pick up Trash"
                maxlength="50"/><br>
-        
+
         <label for="taskinfo">Task Description</label>
         <input name="taskinfo"
                id="taskinfo"
                type="text"
                placeholder="picking up trash"
                maxlength="400"/><br>
-        
+        <input type="submit">
       </fieldset>
     </form>
   </body>
   <footer>
-  
+
   </footer>
-</html> 
+</html>
