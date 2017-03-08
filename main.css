@@ -1,0 +1,18 @@
+body{
+	margin: 0 auto;
+	max-width: 900px;
+    font-family: Helvetica, Geneva, Arial,
+          SunSans-Regular, sans-serif;
+    align: left;
+    }
+nav{}
+nav li{background-color:lightblue; display:inline-block; padding: 14px 16px;}
+nav li a{color: white; text-decoration: none; text-align: left;}
+head{}
+footer{}
+
+input[type=text], input[type=number] {
+    width: 75%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box; }
