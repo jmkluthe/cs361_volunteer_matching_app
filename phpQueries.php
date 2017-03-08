@@ -261,12 +261,18 @@ if(!$stmt->execute()){
 
 
 <!-- Search Queries -->
+// Search for a charity
+print "<form action='phpQueries.php' method='post'>";
+print "Search for a charity by tag: <input type='text' name='tagsearch'>";
+print "<input type='submit' value='Search'>";
+print "</form><br>";
+
 <?php
 	// Query the search item
-	$findFoods  = "SELECT charity.name, tag.name FROM tag INNER JOIN charity_tag ON charity_tag.t_id = tag.id INNER JOIN charity ON charity.id = charity_tag.c_id WHERE tag.name REGEXP ?;";
+	$charSearch  = "SELECT charity.name, tag.name FROM tag INNER JOIN charity_tag ON charity_tag.t_id = tag.id INNER JOIN charity ON charity.id = charity_tag.c_id WHERE tag.name REGEXP ?;";
 	
 	if (isset($_POST['tagsearch']) && $_POST['tagsearch'] != "") {		
-		$tagsrch = $c->prepare($findFoods);
+		$tagsrch = $mysqli->prepare($charSearch);
 	
 		if (!$tagsrch) {
 			print "Charity/tag search query failed: " . $tagsrch->errno . " " . $tagsrch->error;
