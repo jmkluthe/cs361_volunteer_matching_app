@@ -258,3 +258,46 @@ if(!$stmt->execute()){
 	echo "Deleted " . $stmt->affected_rows . " row from day.";
 }
 ?>
+
+
+<!-- Search Queries -->
+<?php
+	// Query the search item
+	$findFoods  = "SELECT charity.name, tag.name FROM tag INNER JOIN charity_tag ON charity_tag.t_id = tag.id INNER JOIN charity ON charity.id = charity_tag.c_id WHERE tag.name REGEXP ?;";
+	
+	if (isset($_POST['tagsearch']) && $_POST['tagsearch'] != "") {		
+		$tagsrch = $c->prepare($findFoods);
+	
+		if (!$tagsrch) {
+			print "Charity/tag search query failed: " . $tagsrch->errno . " " . $tagsrch->error;
+		}
+
+		if (!($tagsrch->bind_param("s", $_POST['tagsearch']))) {
+			print "Charity/tag search bind param failed: " . $tagsrch->errno . " " . $tagsrch->error;
+		}
+	
+		if (!$tagsrch->execute()) {
+			print "Charity/tag search execute failed: " . $tagsrch->errno . " " . $tagsrch->error;
+		}
+	
+		if (!($tagsrch->bind_result($cname, $tname))) {
+			print "Charity/tag search bind result failed: " . $tagsrch->errno . " " . $tagsrch->error;
+		}
+
+		print "<p>Here are the charities we found: </p>";
+		
+		// Display the results of the search in a table
+		$foundCharities = "<table id='charitiesTable'><thead><th>Charity Name<th>Tag<tbody>";
+		
+		while ($tagsrch->fetch()) {
+			// Each found charity will show up in a table row
+			$foundCharities .= "<tr><td>" . $cname . "<td>" . $tname;
+		}
+		
+		$foundCharities .= "</tbody></table><br>";
+		
+		echo $foundCharities;
+		
+		$tagsrch->close();
+	}
+?>
