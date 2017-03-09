@@ -40,7 +40,7 @@ FOREIGN KEY (`e_id`) REFERENCES `event` (`id`) ON DELETE CASCADE ON UPDATE CASCA
 CREATE TABLE `volunteer` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
 `name` varchar(255),
-`email` varchar(255),
+`email` varchar(255) UNIQUE,
 PRIMARY KEY (`id`)
 )ENGINE=InnoDB;
 
