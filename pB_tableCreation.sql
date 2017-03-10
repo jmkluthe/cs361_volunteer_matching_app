@@ -15,6 +15,8 @@ CREATE TABLE `charity` (
 `name` varchar(255) UNIQUE,
 `founder` varchar(255),
 `year_founded` varchar(255),
+`email` varchar(255),
+`password` varchar(255),
 PRIMARY KEY (`id`)
 )ENGINE=InnoDB;
 
@@ -41,6 +43,7 @@ CREATE TABLE `volunteer` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
 `name` varchar(255),
 `email` varchar(255) UNIQUE,
+`password` varchar(255),
 PRIMARY KEY (`id`)
 )ENGINE=InnoDB;
 
