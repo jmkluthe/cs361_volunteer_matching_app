@@ -16,9 +16,14 @@ nav li a{
     color: white;
     text-decoration: none;
     text-align: left; }
-
+article{
+	background-color:lightblue;
+	padding:10px;
+}
 fieldset {
-    margin: 8px 0; }
+  margin: 8px 0;
+	border-color:blue;
+}
 
 legend {
     margin: 8px 0; }
@@ -27,7 +32,9 @@ input[type=text], input[type=number], input[type=date], input[type=time], input[
     width: 75%;
     padding: 12px 20px;
     margin: 8px 0;
-    box-sizing: border-box; }
+    box-sizing: border-box; 
+		border-color:blue;
+}
 
 input[type=submit] {
     background-color: #0066cc;
