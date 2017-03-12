@@ -26,12 +26,6 @@
                type="text"
                placeholder="Jesse Jackson"
                maxlength="50"/><br>
-        <label for="name">First and Last Name</label>
-        <input name="name"
-               id="name"
-               type="text"
-               placeholder="Charitable Organization"
-               maxlength="80"/><br>
         <label for="email">Email Address</label>
         <input name="email"
                id="email"

@@ -53,7 +53,7 @@
         <label for="eventinfo">Information</label>
         <input name="eventinfo"
                id="eventinfo"
-               type=text
+               type="text"
                placeholder="more information"
                maxlength="400"/><br>
         <input type="submit">
