@@ -44,6 +44,18 @@
                type="text"
                placeholder="Jesse Jackson"
                maxlength="50"/><br>
+       <label for="email">Email Address</label>
+       <input name="email"
+               id="email"
+               type="text"
+               placeholder="random_dude@blank.com"
+               maxlength="50"/><br>
+       <label for="pass">Password</label>
+       <input name="pass"
+               id="pass"
+               type="password"
+               placeholder="password"
+               maxlength="30"/><br>
       </fieldset>
       <br>
       <fieldset>
@@ -55,7 +67,7 @@
                placeholder="Party at White House"
                maxlength="100"/><br>
 
-        <label for="eventtime">Date</label>
+        <label for="eventdate">Date</label>
         <input name="eventdate"
                id="eventdate"
                type="date"
