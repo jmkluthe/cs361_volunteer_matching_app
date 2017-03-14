@@ -9,9 +9,9 @@ TRUNCATE TABLE tag;
 SET FOREIGN_KEY_CHECKS = 1;
 
 INSERT INTO `charity` (`name`,`founder`,`year_founded`, `email`, `password`) VALUES 
-("testname","testfounder",1998,"test1@email.com", "password"), 
-("Helping Hands", "Mary Shields", 2001,"test2@email.com", "password"), 
-("Food for the Hungry", "Robert Jones", 2013,"test3@email.com", "password");
+("testname","testfounder",1998,"test1@email.com", "password1"), 
+("Helping Hands", "Mary Shields", 2001,"test2@email.com", "password2"), 
+("Food for the Hungry", "Robert Jones", 2013,"test3@email.com", "password3");
 
 INSERT INTO `event` (`c_id`, `name`, `information`, `time`) VALUES 
 ((SELECT id FROM `charity` WHERE name="testname"), "Fundraiser", "raise funds", "March 5th, noon"), 
