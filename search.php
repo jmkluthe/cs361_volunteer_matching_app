@@ -28,7 +28,7 @@
 	// Query the search item
 	if (isset($_POST['Search']) && $_POST['Search'] == "Tag")
 	{
-	$charSearch = "SELECT charity.name, event.name, tag.name, task.name FROM event INNER JOIN
+	$charSearch = "SELECT charity.name, event.name, tag.name, task.name, event.time, task.id FROM event INNER JOIN
 					charity ON event.c_id = charity.id INNER JOIN
 					charity_tag ON charity_tag.c_id = charity.id INNER JOIN
 					tag ON charity_tag.t_id = tag.id INNER JOIN
@@ -37,7 +37,7 @@
 	}
 	else if (isset($_POST['Search']) && $_POST['Search'] == "Charity")
 	{
-	$charSearch = "SELECT charity.name, event.name, tag.name, task.name FROM event INNER JOIN
+	$charSearch = "SELECT charity.name, event.name, tag.name, task.name, event.time, task.id FROM event INNER JOIN
 					charity ON event.c_id = charity.id INNER JOIN
 					charity_tag ON charity_tag.c_id = charity.id INNER JOIN
 					tag ON charity_tag.t_id = tag.id INNER JOIN
@@ -46,7 +46,7 @@
 	}
 	else
 	{
-	$charSearch = "SELECT charity.name, event.name, tag.name, task.name FROM event INNER JOIN
+	$charSearch = "SELECT charity.name, event.name, tag.name, task.name, event.time, task.id FROM event INNER JOIN
 					charity ON event.c_id = charity.id INNER JOIN
 					charity_tag ON charity_tag.c_id = charity.id INNER JOIN
 					tag ON charity_tag.t_id = tag.id INNER JOIN
@@ -67,17 +67,17 @@
 			print "Charity/tag search execute failed: " . $tagsrch->errno . " " . $tagsrch->error;
 		}
 	
-		if (!($tagsrch->bind_result($cname, $ename, $tname, $taname))) {
+		if (!($tagsrch->bind_result($cname, $ename, $tname, $taname, $etime, $tid))) {
 			print "Charity/tag search bind result failed: " . $tagsrch->errno . " " . $tagsrch->error;
 		}
 		print "<p>Here are the events we found: </p>";
 		
 		// Display the results of the search in a table
-		$foundCharities = "<table id='charitiesTable'><thead><th>Charity Name<th>Event Name<th>Tag<th>Tasks<tbody>";
+		$foundCharities = "<table id='charitiesTable'><thead><th>Charity Name<th>Event Name<th>Tag<th>Tasks<th>Event Time<th>Sign-Up<tbody>";
 		
 		while ($tagsrch->fetch()) {
 			// Each found charity will show up in a table row
-			$foundCharities .= "<tr><td>" . $cname . "<td>" . $ename . "<td>" . $tname . "<td>" . $taname;
+			$foundCharities .= "<tr><td>" . $cname . "<td>" . $ename . "<td>" . $tname . "<td>" . $taname . "<td>" . $etime . "<td><form name='signUp' method='post' action='signupV.php'>Email: <input type='text' name='vEmail' style='width: 150px;'><br>Password: <input type='password' name='vPassword' style='width: 150px;'><input type='hidden' name='vTask' value='" . $tid . "'><input type='submit' value='Sign-Up'></form>";
 		}
 		
 		$foundCharities .= "</tbody></table><br>";
