@@ -3,7 +3,7 @@
    include 'header.html'; 
 ?>
 
-    <h2>Search Events By Tag</h2>
+    <h2>Search For Events</h2>
     <form method="POST" action="search.php">
       <fieldset>
       <legend>Search for specific event by:</legend>
@@ -70,7 +70,7 @@
 		if (!($tagsrch->bind_result($cname, $ename, $tname, $taname, $etime, $tid))) {
 			print "Charity/tag search bind result failed: " . $tagsrch->errno . " " . $tagsrch->error;
 		}
-		print "<p>Here are the events we found: </p>";
+		print "<p>Available tasks for upcoming events: </p>";
 		
 		// Display the results of the search in a table
 		$foundCharities = "<table id='charitiesTable'><thead><th>Charity Name<th>Event Name<th>Tag<th>Tasks<th>Event Time<th>Sign-Up<tbody>";
