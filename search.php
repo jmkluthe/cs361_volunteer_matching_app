@@ -33,7 +33,7 @@
 					charity_tag ON charity_tag.c_id = charity.id INNER JOIN
 					tag ON charity_tag.t_id = tag.id INNER JOIN
 					task ON event.id = task.e_id
-					WHERE tag.name REGEXP ?;";
+					WHERE tag.name REGEXP ? AND task.id NOT IN (SELECT volunteer_task.t_id FROM volunteer_task);";
 	}
 	else if (isset($_POST['Search']) && $_POST['Search'] == "Charity")
 	{
@@ -42,7 +42,7 @@
 					charity_tag ON charity_tag.c_id = charity.id INNER JOIN
 					tag ON charity_tag.t_id = tag.id INNER JOIN
 					task ON event.id = task.e_id
-					WHERE charity.name REGEXP ?;";
+					WHERE charity.name REGEXP ? AND task.id NOT IN (SELECT volunteer_task.t_id FROM volunteer_task);";
 	}
 	else
 	{
@@ -51,7 +51,7 @@
 					charity_tag ON charity_tag.c_id = charity.id INNER JOIN
 					tag ON charity_tag.t_id = tag.id INNER JOIN
 					task ON event.id = task.e_id
-					WHERE event.name REGEXP ?;";
+					WHERE event.name REGEXP ? AND task.id NOT IN (SELECT volunteer_task.t_id FROM volunteer_task);";
 	}
 	if (isset($_POST['tagsearch']) && $_POST['tagsearch'] != "") {		
 		$tagsrch = $mysqli->prepare($charSearch);
