@@ -8,10 +8,10 @@ TRUNCATE TABLE charity_tag;
 TRUNCATE TABLE tag;
 SET FOREIGN_KEY_CHECKS = 1;
 
-INSERT INTO `charity` (`name`,`founder`,`year_founded`) VALUES 
-("testname","testfounder",1998), 
-("Helping Hands", "Mary Shields", 2001), 
-("Food for the Hungry", "Robert Jones", 2013);
+INSERT INTO `charity` (`name`,`founder`,`year_founded`, `email`, `password`) VALUES 
+("testname","testfounder",1998,"test1@email.com", "password"), 
+("Helping Hands", "Mary Shields", 2001,"test2@email.com", "password"), 
+("Food for the Hungry", "Robert Jones", 2013,"test3@email.com", "password");
 
 SELECT * from `charity`;
 

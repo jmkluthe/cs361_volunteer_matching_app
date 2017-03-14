@@ -18,24 +18,22 @@
 <?php
     
     //query to get charity id
-    #echo "email: " . $_POST['email'];
-    
-    $query = "SELECT id FROM charity WHERE name=" . $_POST['name'];
-    if(!($stmt = $mysqli->prepare($query))){
+    if(!($stmt = $mysqli->prepare("SELECT id FROM charity WHERE email = ?"))){
         echo "Prepare failed: " . $mysqli->errno . " " . $mysqli->error;
     }
-    #if(!($stmt->bind_param("s", $_POST['email']))){
-    #    echo "Bind failed: " . $mysqli->errno . " " . $mysqli->error;
-    #}
+    if(!($stmt->bind_param("s", $_POST['email']))){
+        echo "Bind failed: " . $mysqli->errno . " " . $mysqli->error;
+    }
     if(!$stmt->execute()){
         echo "Execute failed: " . $mysqli->errno . " " . $mysqli->error;
     }    
     if(!$stmt->bind_result($charity_id)){
         echo "Bind failed: " . $mysqli->errno . " " . $mysqli->error;
     }
-    $stmt->close();
     
-    echo "charity id: " . $charity_id;
+    $stmt->fetch();
+    
+    $stmt->close();    
     
     //query for insert into event
     if(!($stmt = $mysqli->prepare("INSERT INTO event(c_id, name, information, time) VALUES (?, ?, ?, ?)"))){
@@ -43,12 +41,12 @@
     }
     $event_time = $_POST['eventdate'] . ' ' . $_POST['eventtime'];
     if(!($stmt->bind_param("isss", $charity_id, $_POST['eventname'], $_POST['eventinfo'], $event_time))){
-        echo "Bind failed: " . $mysqli->errno . " " . $mysqli->error;
+       echo "Bind failed: " . $mysqli->errno . " " . $mysqli->error;
     }
     if(!$stmt->execute()){
-        echo "Execute failed: " . $mysqli->errno . " " . $mysqli->error;
+       echo "Execute failed: " . $mysqli->errno . " " . $mysqli->error;
     } else {
-        echo "Event created!";
+       echo "Event created!";
     }    
     $stmt->close();
 	
