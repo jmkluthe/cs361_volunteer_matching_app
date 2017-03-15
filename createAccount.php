@@ -31,13 +31,15 @@
                id="email"
                type="text"
                placeholder="random_org@blank.com"
-               maxlength="50"/><br>
+               maxlength="50"
+               required/><br>
        <label for="pass">Password</label>
        <input name="pass"
                id="pass"
                type="password"
                placeholder="password"
-               maxlength="30"/><br>
+               maxlength="30"
+               required/><br>
         <input type="submit">
       </fieldset> 
     </form>
@@ -55,13 +57,15 @@
                id="vemail"
                type="text"
                placeholder="random_dude@blank.com"
-               maxlength="50"/><br>
+               maxlength="50"
+               required/><br>
        <label for="vpass">Password</label>
        <input name="vpass"
                id="vpass"
                type="password"
                placeholder="password"
-               maxlength="30"/><br>
+               maxlength="30"
+               required/><br>
         <input type="submit">
       </fieldset>  
     </form>

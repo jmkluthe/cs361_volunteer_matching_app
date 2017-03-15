@@ -37,7 +37,7 @@
 		if (!$signup->execute()) {
 			print "Incorrect email and/or password: " . $signup->errno . " " . $signup->error;
 		} else {
-			echo "Added " . $signup->affected_rows . " row(s).";
+			echo "Added " . $signup->affected_rows . " task(s) to volunteer.";
 			
 			
 		}

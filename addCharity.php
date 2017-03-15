@@ -1,3 +1,8 @@
+<?php 
+   $pagetitle="Home";
+   include 'header.html'; 
+?>
+
 <?php
     ini_set('display_errors', 'On');
     //replace credentials as necessary
@@ -7,14 +12,6 @@
     }
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Add Event</title>
-</head>
-<body>
-<h1>Add Event</h1>
 <?php
 	
 	//query for insert into charity
@@ -27,7 +24,7 @@
     if(!$stmt->execute()){
         echo "Execute failed: " . $mysqli->errno . " " . $mysqli->error;
     } else {
-        echo "Charity created!";
+        echo "Charity account created!";
     }
     $stmt->close();
 ?>
