@@ -1,5 +1,5 @@
 <?php
-   $pagetitle="Event Added";
+   $pagetitle="Task Added";
    include 'header.html'; 
 
     ini_set('display_errors', 'On');
@@ -14,10 +14,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Add Event</title>
+<title>Task Added</title>
 </head>
 <body>
-<h3>Add Event</h3>
+<h3>Task Added</h3>
 <?php
     
     //query to get charity id
@@ -38,22 +38,44 @@
     
     $stmt->close();    
     
-    //query for insert into event
+    //query to get event id
     if($charity_id != NULL) {
-        if(!($stmt = $mysqli->prepare("INSERT INTO event(c_id, name, information, time) VALUES (?, ?, ?, ?)"))){
+        if(!($stmt = $mysqli->prepare("SELECT id FROM event WHERE name = ? AND c_id = ?"))){
             echo "Prepare failed: " . $mysqli->errno . " " . $mysqli->error;
         }
-        $event_time = $_POST['eventdate'] . ' ' . $_POST['eventtime'];
-        if(!($stmt->bind_param("isss", $charity_id, $_POST['eventname'], $_POST['eventinfo'], $event_time))){
+        if(!($stmt->bind_param("si", $_POST['eventname'], $charity_id))){
+            echo "Bind failed: " . $mysqli->errno . " " . $mysqli->error;
+        }
+        if(!$stmt->execute()){
+            echo "Execute failed: " . $mysqli->errno . " " . $mysqli->error;
+        }    
+        if(!$stmt->bind_result($event_id)){
+            echo "Bind failed: " . $mysqli->errno . " " . $mysqli->error;
+        }
+        
+        $stmt->fetch();
+        
+        $stmt->close();
+    } else {
+        echo "<p>That email address did not match a registered charity. Please try again.</p>";
+    }
+    
+    
+    //query for insert into event
+    if($charity_id != NULL && $event_id != NULL) {
+        if(!($stmt = $mysqli->prepare("INSERT INTO task(e_id, name, description) VALUES (?, ?, ?)"))){
+            echo "Prepare failed: " . $mysqli->errno . " " . $mysqli->error;
+        }
+        if(!($stmt->bind_param("iss", $event_id, $_POST['taskname'], $_POST['taskinfo']))){
            echo "Bind failed: " . $mysqli->errno . " " . $mysqli->error;
         }
         if(!$stmt->execute()){
            echo "Execute failed: " . $mysqli->errno . " " . $mysqli->error;
         } else {
-           echo "<p>Event successfully created.</p>";
+           echo "<p>Task successfully created.</p>";
         }    
         $stmt->close();
     } else {
-        echo "<p>That email address did not match a registered charity. Please try again.</p>";
+        echo "<p>That event name did not match an event registered with the indicated charity. Please try again.</p>";
     }
 ?>
