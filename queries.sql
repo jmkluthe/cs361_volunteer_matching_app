@@ -20,8 +20,14 @@ INSERT INTO `event` (`c_id`, `name`, `information`, `time`) VALUES
 
 INSERT INTO `task` (`e_id`, `name`, `description`) VALUES 
 ((SELECT id FROM `event` WHERE name="Fundraiser"), "taskname", "task description"), 
+((SELECT id FROM `event` WHERE name="Fundraiser"), "taskname2", "task description2"), 
+((SELECT id FROM `event` WHERE name="Fundraiser"), "taskname3", "task description3"), 
 ((SELECT id FROM `event` WHERE name="pancake breakfast"), "make pancakes", "cook and serve pancakes"), 
+((SELECT id FROM `event` WHERE name="pancake breakfast"), "bring syrup", "bring delicious maple syrup"), 
+((SELECT id FROM `event` WHERE name="pancake breakfast"), "make coffee", "because people want to feel awake"), 
 ((SELECT id FROM `event` WHERE name="free dinner"), "bring ingredients", "bring ingredients for the meal");
+((SELECT id FROM `event` WHERE name="free dinner"), "cook the meal", "make some awesome food");
+((SELECT id FROM `event` WHERE name="free dinner"), "bring dessert", "who doesn't want dessert");
 
 INSERT INTO `volunteer` (`name`, `email`, `password`) VALUES 
 ("volunteer name", "volunteer@email.com", "superman1"), 
