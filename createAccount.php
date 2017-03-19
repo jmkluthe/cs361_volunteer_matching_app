@@ -1,6 +1,13 @@
 <?php 
    $pagetitle="Home";
-   include 'header.html'; 
+   include 'header.html';
+   
+    ini_set('display_errors', 'On');
+    //replace credentials as necessary
+    $mysqli = new mysqli('oniddb.cws.oregonstate.edu', 'kluthej-db', 'bgT8kbH3894HObbo', 'kluthej-db');
+    if($mysqli->connect_errno) {
+        echo 'Error connecting to database: ' . $mysqli->connect_errno . ' ' . $mysqli->connect_error;
+    }
 ?>
 
     <form method="post" action="addCharity.php">
@@ -26,6 +33,7 @@
                type="text"
                placeholder="Jesse Jackson"
                maxlength="50"/><br>
+               
         <label for="email">Email Address</label>
         <input name="email"
                id="email"
@@ -40,6 +48,27 @@
                placeholder="password"
                maxlength="30"
                required/><br>
+        <label for="tag_id">Tag</label> 
+            <select name="tag_id">
+                <?php
+                
+                    if(!($stmt = $mysqli->prepare("SELECT id, name FROM tag"))){
+                        echo "Prepare failed: "  . $stmt->errno . " " . $stmt->error;
+                    }
+                    if(!$stmt->execute()){
+                        echo "Execute failed: " . $stmt->errno . " " . $stmt->error;
+                    }
+                    if(!$stmt->bind_result($tag_id, $tag_name)){
+                        echo "Bind failed: " . $stmt->errno . " " . $stmt->error;
+                    }
+                    while ($stmt->fetch()){
+                        echo '<option value=" ' .$tag_id . ' "> ' . $tag_name . '</option>\n';
+                    }
+                    $stmt->close();
+                ?>
+
+            </select>
+        <br />
         <input type="submit">
       </fieldset> 
     </form>

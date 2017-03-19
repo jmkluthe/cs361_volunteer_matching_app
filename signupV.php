@@ -19,7 +19,7 @@
   </article>
   
  <?php
-	$mysqli = new mysqli("oniddb.cws.oregonstate.edu", "dbname", "password", "dbname");
+	$mysqli = new mysqli('oniddb.cws.oregonstate.edu', 'kluthej-db', 'bgT8kbH3894HObbo', 'kluthej-db');
 	
 	$signupTask = "INSERT INTO volunteer_task (v_id, t_id) VALUES ((SELECT id FROM volunteer WHERE email = ? AND password = ?), ?);";
 	

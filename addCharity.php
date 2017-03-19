@@ -24,7 +24,39 @@
     if(!$stmt->execute()){
         echo "Execute failed: " . $mysqli->errno . " " . $mysqli->error;
     } else {
-        echo "Charity account created!";
+        echo "<p>Charity account created!<p>";
     }
     $stmt->close();
+    
+    //select the charity id just created
+    if(!($stmt = $mysqli->prepare("SELECT id FROM charity WHERE email = ?"))){
+        echo "Prepare failed: " . $mysqli->errno . " " . $mysqli->error;
+    }
+    if(!($stmt->bind_param("s", $_POST['email']))){
+        echo "Bind failed: " . $mysqli->errno . " " . $mysqli->error;
+    }
+    if(!$stmt->execute()){
+        echo "Execute failed: " . $mysqli->errno . " " . $mysqli->error;
+    }
+    if(!$stmt->bind_result($charity_id)){
+        echo "Bind failed: " . $stmt->errno . " " . $stmt->error;
+    }
+    $stmt->fetch();
+    $stmt->close();
+
+    //query to create tag relationship
+    if(!($stmt = $mysqli->prepare("INSERT INTO charity_tag(c_id, t_id) VALUES (?, ?)"))){
+        echo "Prepare failed: " . $mysqli->errno . " " . $mysqli->error;
+    }
+    if(!($stmt->bind_param("ii", $charity_id, $_POST['tag_id']))){
+        echo "Bind failed: " . $mysqli->errno . " " . $mysqli->error;
+    }
+    if(!$stmt->execute()){
+        echo "Execute failed: " . $mysqli->errno . " " . $mysqli->error;
+    } else {
+        echo "<p>Charity to Tag relationship created!</p>";
+    }
+    $stmt->close();
+    
+    
 ?>

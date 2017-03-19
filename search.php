@@ -20,7 +20,7 @@
   
   
   <?php
-	$mysqli = new mysqli("oniddb.cws.oregonstate.edu", "db-name", "password", "db-name");
+	$mysqli = new mysqli('oniddb.cws.oregonstate.edu', 'kluthej-db', 'bgT8kbH3894HObbo', 'kluthej-db');
 	
 	$charSearch = "";
 	

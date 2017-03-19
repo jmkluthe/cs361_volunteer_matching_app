@@ -6,7 +6,7 @@
 <?php
     ini_set('display_errors', 'On');
     //replace credentials as necessary
-    $mysqli = new mysqli('oniddb.cws.oregonstate.edu', 'db-name', 'password', 'db-name');
+    $mysqli = new mysqli('oniddb.cws.oregonstate.edu', 'kluthej-db', 'bgT8kbH3894HObbo', 'kluthej-db');
     if($mysqli->connect_errno) {
        echo 'Error connecting to database: ' . $mysqli->connect_errno . ' ' . $mysqli->connect_error;
     }
